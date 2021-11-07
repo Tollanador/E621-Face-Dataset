@@ -40,7 +40,12 @@ def pad_img(img):
 
     #im = cv2.resize(img, (new_size[1], new_size[0]))
     im = Image.fromarray(img)
-    im = image.resize((new_size[1], new_size[0]), Image.LANCZOS)
+    im = im.resize((new_size[1], new_size[0]), Image.LANCZOS)
+    
+    # convert back to cv2 image format for ez compatability
+    im = np.array(image) 
+    # Convert RGB to BGR 
+    im = im[:, :, ::-1].copy()
 
     delta_w = size - new_size[1]
     delta_h = size - new_size[0]
