@@ -4,6 +4,7 @@ import os.path
 import cv2
 from os import path
 import argparse
+from PIL import Image
 
 settings = {
         'IMAGE_PATH'     :  'out',
@@ -37,7 +38,9 @@ def pad_img(img):
     ratio = float(size)/max(old_size)
     new_size = tuple([int(x*ratio) for x in old_size])
 
-    im = cv2.resize(img, (new_size[1], new_size[0]))
+    #im = cv2.resize(img, (new_size[1], new_size[0]))
+    im = Image.fromarray(img)
+    im = image.resize((new_size[1], new_size[0]), Image.LANCZOS)
 
     delta_w = size - new_size[1]
     delta_h = size - new_size[0]
