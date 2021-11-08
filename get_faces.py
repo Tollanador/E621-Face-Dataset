@@ -44,7 +44,7 @@ def pad_img(img):
     im = im.resize((new_size[1], new_size[0]), Image.LANCZOS)
     
     # convert back to cv2 image format for ez compatability
-    im = np.array(image) 
+    im = np.array(im) 
     # Convert RGB to BGR 
     im = im[:, :, ::-1].copy()
 
